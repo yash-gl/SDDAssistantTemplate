@@ -3,7 +3,7 @@
     <x:Property sap2010:Annotation.AnnotationText="Project folder location" Name="ProjectPath" Type="InArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="Folder location where SDD/DSD to be generated" Name="SDDPath" Type="InArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="SDD file name" Name="SDDFileName" Type="InArgument(x:String)" />
-    <x:Property Name="WorkflowPath" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Path to the directory to store workflow templates" Name="WorkflowPath" Type="InArgument(x:String)" />
   </x:Members>
   <this:Main.ProjectPath>
     <InArgument x:TypeArguments="x:String">
@@ -18,7 +18,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1662,5382</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1662,1229.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="70">
@@ -91,20 +91,20 @@
       <AssemblyReference>UiPath.Platform</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Generate SDD" sap:VirtualizedContainerService.HintSize="793.333333333333,5317.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence DisplayName="Generate SDD" sap:VirtualizedContainerService.HintSize="460,1164.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="751.333333333333,744" sap2010:WorkflowViewState.IdRef="Sequence_5">
+    <Sequence DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="418,176" sap2010:WorkflowViewState.IdRef="Sequence_5">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Project path" sap:VirtualizedContainerService.HintSize="526,22" sap2010:WorkflowViewState.IdRef="Sequence_1">
+      <Sequence DisplayName="Project path" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Sequence_1">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:Boolean" Name="ProjectFolderExists" />
         </Sequence.Variables>
@@ -133,10 +133,10 @@
           </If.Then>
         </If>
       </Sequence>
-      <Sequence DisplayName="SDD output path" sap:VirtualizedContainerService.HintSize="526,590" sap2010:WorkflowViewState.IdRef="Sequence_4">
+      <Sequence DisplayName="SDD output path" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Sequence_4">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -162,7 +162,7 @@
         </ui:CopyFile>
       </Sequence>
     </Sequence>
-    <Sequence DisplayName="Read Project and Create SDD" sap:VirtualizedContainerService.HintSize="751.333333333333,4180" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence DisplayName="Read Project and Create SDD" sap:VirtualizedContainerService.HintSize="418,595.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Default="[Path.Combine(ProjectPath,&quot;project.json&quot;)]" Name="ProjectJsonFile" />
         <Variable x:TypeArguments="x:Boolean" Name="IfProjectJsonExist" />
@@ -179,7 +179,7 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign sap:VirtualizedContainerService.HintSize="709.333333333333,62" sap2010:WorkflowViewState.IdRef="Assign_8">
+      <Assign sap:VirtualizedContainerService.HintSize="376,62" sap2010:WorkflowViewState.IdRef="Assign_8">
         <Assign.To>
           <OutArgument x:TypeArguments="x:Boolean">[IfProjectJsonExist]</OutArgument>
         </Assign.To>
@@ -187,7 +187,7 @@
           <InArgument x:TypeArguments="x:Boolean">[File.Exists(ProjectJsonFile)]</InArgument>
         </Assign.Value>
       </Assign>
-      <If Condition="[IfProjectJsonExist]" DisplayName="If project json exist" sap:VirtualizedContainerService.HintSize="709.333333333333,22" sap2010:WorkflowViewState.IdRef="If_3">
+      <If Condition="[IfProjectJsonExist]" DisplayName="If project json exist" sap:VirtualizedContainerService.HintSize="376,22" sap2010:WorkflowViewState.IdRef="If_3">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -283,7 +283,7 @@
           </Sequence>
         </If.Then>
       </If>
-      <Sequence DisplayName="Workflow arguments" sap:VirtualizedContainerService.HintSize="709.333333333333,3797.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_15">
+      <Sequence DisplayName="Workflow arguments" sap:VirtualizedContainerService.HintSize="376,212.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_15">
         <Sequence.Variables>
           <Variable x:TypeArguments="sd:DataTable" Name="dtArguments" />
         </Sequence.Variables>
@@ -293,8 +293,8 @@
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:BuildDataTable DataTable="[dtWorkflowArguments]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="667.333333333333,58.6666666666667" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Workflow_x0020_file&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Arguments&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Description&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-        <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Workflow file" sap:VirtualizedContainerService.HintSize="667.333333333333,3606.66666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[Directory.GetFiles(ProjectPath, &quot;*.xaml&quot;, SearchOption.AllDirectories)]">
+        <ui:BuildDataTable DataTable="[dtWorkflowArguments]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Workflow_x0020_file&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Arguments&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Description&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+        <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Workflow file" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[Directory.GetFiles(ProjectPath, &quot;*.xaml&quot;, SearchOption.AllDirectories)]">
           <ui:ForEach.Body>
             <ActivityAction x:TypeArguments="x:String">
               <ActivityAction.Argument>
@@ -787,13 +787,13 @@
           </ui:ForEach.Body>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:ForEach>
       </Sequence>
-      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CreateSDD workflow" sap:VirtualizedContainerService.HintSize="709.333333333333,86.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="CreateSDD.xaml">
+      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CreateSDD workflow" sap:VirtualizedContainerService.HintSize="376,86.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="CreateSDD.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="x:Boolean" x:Key="IfProjectJsonExist">
             <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="IfProjectJsonExist" />
@@ -819,7 +819,7 @@
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="751.333333333333,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Find your SDD at: &quot;+Path.Combine(SDDPath,SDDFileName)]" />
-    <ui:StartProcess Arguments="{x:Null}" WorkingDirectory="{x:Null}" DisplayName="Start Process" FileName="[Path.Combine(SDDPath,SDDFileName)]" sap:VirtualizedContainerService.HintSize="751.333333333333,86.6666666666667" sap2010:WorkflowViewState.IdRef="StartProcess_1" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="418,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Find your SDD at: &quot;+Path.Combine(SDDPath,SDDFileName)]" />
+    <ui:StartProcess Arguments="{x:Null}" WorkingDirectory="{x:Null}" DisplayName="Start Process" FileName="[Path.Combine(SDDPath,SDDFileName)]" sap:VirtualizedContainerService.HintSize="418,86.6666666666667" sap2010:WorkflowViewState.IdRef="StartProcess_1" />
   </Sequence>
 </Activity>
